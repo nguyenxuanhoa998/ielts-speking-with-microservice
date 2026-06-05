@@ -16,5 +16,19 @@ Thumbs.db
 # bat
 *.bat
 
-#upload
+# upload
 backend/uploads/
+
+# Java / Maven
+pdf-service/target/
+pdf-service/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.iws
+*.ipr
