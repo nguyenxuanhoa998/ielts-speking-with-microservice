@@ -10,6 +10,11 @@ services:
         fromDatabase:
           name: ielts-speaking-db
           property: connectionString
+      - key: PDF_SERVICE_URL
+        fromService:
+          name: ielts-pdf-service
+          type: web
+          property: host
       - key: GEMINI_API_KEY
         sync: false
       - key: GROQ_API_KEY
@@ -22,6 +27,13 @@ services:
         sync: false
       - key: SECRET_KEY
         generateValue: true
+
+  - type: web
+    name: ielts-pdf-service
+    env: docker
+    plan: free
+    dockerfilePath: ./pdf-service/Dockerfile
+    dockerContext: ./pdf-service
 
 databases:
   - name: ielts-speaking-db

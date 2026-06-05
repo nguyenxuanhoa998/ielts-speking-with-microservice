@@ -11,7 +11,8 @@ from src.utils.database import get_db
 
 router = APIRouter()
 
-PDF_SERVICE_URL = os.getenv("PDF_SERVICE_URL", "http://localhost:8081")
+_pdf_url_raw = os.getenv("PDF_SERVICE_URL", "http://localhost:8081")
+PDF_SERVICE_URL = _pdf_url_raw if _pdf_url_raw.startswith("http") else f"https://{_pdf_url_raw}"
 
 
 @router.get("/submissions/{submission_id}/pdf")
