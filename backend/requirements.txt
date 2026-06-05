@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+psycopg2-binary
+python-dotenv
+python-multipart
+groq
+google-genai
+cloudinary
+httpx
+passlib[bcrypt]
+bcrypt==4.0.1
+PyJWT
+email-validator
