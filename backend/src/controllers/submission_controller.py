@@ -24,7 +24,7 @@ cloudinary.config(
 def get_teachers(db: Session):
     teachers = (
         db.query(User)
-        .filter(User.role == "teacher", User.is_approved == True)
+        .filter(User.role == "teacher", User.status == "approved")
         .order_by(User.full_name)
         .all()
     )
@@ -93,7 +93,7 @@ async def create_submission(
 
     assigned_teacher_id = None
     if teacher_id:
-        teacher = db.query(User).filter(User.id == teacher_id, User.role == "teacher", User.is_approved == True).first()
+        teacher = db.query(User).filter(User.id == teacher_id, User.role == "teacher", User.status == "approved").first()
         if teacher:
             assigned_teacher_id = teacher.id
 
@@ -268,7 +268,7 @@ def assign_teacher(submission_id: int, teacher_id: Optional[int], db: Session, c
 
     if teacher_id is not None:
         teacher = db.query(User).filter(
-            User.id == teacher_id, User.role == "teacher", User.is_approved == True
+            User.id == teacher_id, User.role == "teacher", User.status == "approved"
         ).first()
         if not teacher:
             raise HTTPException(status_code=404, detail="Teacher not found")
