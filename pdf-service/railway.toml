@@ -1,0 +1,5 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "java -jar target/pdf-service-1.0.0.jar"
