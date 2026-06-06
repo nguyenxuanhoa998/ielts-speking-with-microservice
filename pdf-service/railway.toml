@@ -1,5 +1,5 @@
 [build]
-builder = "nixpacks"
+builder = "dockerfile"
 
 [deploy]
-startCommand = "java -jar target/pdf-service-1.0.0.jar"
+startCommand = "java -jar /app/app.jar"
